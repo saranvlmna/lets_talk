@@ -17,7 +17,7 @@ export class ChatGateway {
       socket.id,
     );
   }
-  
+
   handleDisconnect(socket: Socket) {
     return this.chatService.offlineUser(socket.id);
   }

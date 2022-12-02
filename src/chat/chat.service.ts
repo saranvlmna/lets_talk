@@ -12,9 +12,7 @@ export class ChatService {
   ) {}
 
   createUser() {
-    this.userModel.create({
-    
-    });
+    this.userModel.create({});
   }
 
   findUser(userId: any) {
@@ -34,5 +32,24 @@ export class ChatService {
     );
   }
 
+  async activeUser(userId: any, socketId: any) {
+    const activeUser = await this.liveModel.find({ userId });
+    if (activeUser && activeUser.length !== 0) {
+      return this.liveModel.updateOne(
+        { userId },
+        {
+          socketId,
+        },
+      );
+    } else {
+      return this.liveModel.create({
+        userId,
+        socketId,
+      });
+    }
+  }
 
+  async offlineUser(socketId: any) {
+    return this.liveModel.deleteOne({ socketId });
+  }
 }
