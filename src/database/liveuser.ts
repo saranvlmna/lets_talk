@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { now, Document } from 'mongoose';
 
 export type ActiveDocument = Active & Document;
 
@@ -10,6 +10,12 @@ export class Active {
 
   @Prop()
   socketId: string;
+
+  @Prop({ default: now() })
+  createdAt: Date;
+
+  @Prop({ default: now() })
+  updatedAt: Date;
 }
 
 export const ActiveSchema = SchemaFactory.createForClass(Active);

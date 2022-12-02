@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from 'src/database/models/user';
+import { User, UserDocument } from 'src/database/user';
 import { Model } from 'mongoose';
-import { Active, ActiveDocument } from 'src/database/models/liveuser';
+import { Active, ActiveDocument } from 'src/database/liveuser';
 
 @Injectable()
 export class ChatService {
