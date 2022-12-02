@@ -27,7 +27,7 @@ export class ChatGateway {
     @MessageBody() message: any,
     @ConnectedSocket() socket: Socket,
   ): Promise<void> {
-    let user = await this.chatService.findUser(message['reciverId']);
+    let user = await this.chatService.findReceiver(message['reciverId']);
     if (user) {
       socket.to(user.socketId).emit('reciveMessage', message);
     }

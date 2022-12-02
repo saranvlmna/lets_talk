@@ -11,25 +11,8 @@ export class ChatService {
     @InjectModel(Active.name) private liveModel: Model<ActiveDocument>,
   ) {}
 
-  createUser() {
-    this.userModel.create({});
-  }
-
-  findUser(userId: any) {
+  findReceiver(userId: any) {
     return this.liveModel.findOne({ userId });
-  }
-
-  updateUser(userId: any, socketId: any) {
-    return this.userModel.updateOne(
-      {
-        _id: userId,
-      },
-      {
-        $set: {
-          socketId: socketId,
-        },
-      },
-    );
   }
 
   async activeUser(userId: any, socketId: any) {
