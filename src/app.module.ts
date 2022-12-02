@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ChatModule } from './chat/chat.module';
 import { ChatGateway } from './chatgateway';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './database/models/user';
+import { User, UserSchema } from './database/user';
 @Module({
   imports: [
     ConfigModule.forRoot(),
